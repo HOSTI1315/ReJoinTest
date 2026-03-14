@@ -1,0 +1,50 @@
+{
+  "name": "rejoin-tool-skrilyahub",
+  "version": "1.0.0",
+  "description": "ReJoinTool (SkrilyaHUB) - десктоп-приложение для ре-джоина Roblox",
+  "main": "electron-main.cjs",
+  "scripts": {
+    "dev": "cd ui && npm run dev",
+    "ui:build": "cd ui && npm run build",
+    "py:build": "pyinstaller api_server.spec --noconfirm",
+    "electron:build": "electron-builder --win --dir",
+    "electron:dist": "electron-builder --win",
+    "build": "npm run py:build && npm run ui:build && npm run electron:dist",
+    "start": "electron .",
+    "start:dev": "start /B cd ui && npm run dev & timeout /t 3 & electron ."
+  },
+  "build": {
+    "appId": "com.skrilyahub.rejointool",
+    "productName": "ReJoinTool (SkrilyaHUB)",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron-main.cjs",
+      "assets/**",
+      "ui/dist/**"
+    ],
+    "extraResources": [
+      {
+        "from": "dist/api_server.exe",
+        "to": "api_server/api_server.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "ReJoinTool (SkrilyaHUB)"
+    }
+  },
+  "devDependencies": {
+    "electron": "^40.8.0",
+    "electron-builder": "^25.1.8"
+  }
+}

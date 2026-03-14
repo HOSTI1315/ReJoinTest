@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+ui/node_modules/
+
+# Build outputs
+dist/
+build/
+release/
+ui/dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+*.egg
+
+# Executables
+*.exe
+
+# Config with sensitive data (cookies!)
+rejoin_config.json
+scripts_sync_state.json
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+.env
